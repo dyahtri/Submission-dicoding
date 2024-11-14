@@ -71,6 +71,18 @@ elif menu == "Visualisasi":
     plt.title("Tren Penyewaan Sepeda Harian")
     st.pyplot(plt)
 
+    # Visualisasi Tren Musiman
+    st.subheader("Tren Penyewaan Sepeda Berdasarkan Musim")
+    seasonal_counts = filtered_data.groupby('season')['cnt'].mean().reset_index()
+    seasonal_counts['season'] = seasonal_counts['season'].map({1: 'Spring', 2: 'Summer', 3: 'Fall', 4: 'Winter'})
+
+    plt.figure(figsize=(10, 6))
+    sns.barplot(data=seasonal_counts, x='season', y='cnt', palette='Set2')
+    plt.xlabel("Musim")
+    plt.ylabel("Rata-rata Jumlah Penyewaan Sepeda")
+    plt.title("Tren Penyewaan Sepeda Berdasarkan Musim")
+    st.pyplot(plt)
+
 # Bagian Prediksi
 elif menu == "Prediksi":
     st.title("Prediksi Jumlah Penyewaan Sepeda")
