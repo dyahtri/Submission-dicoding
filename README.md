@@ -38,4 +38,4 @@ Bike Rental Prediction Dashboard adalah aplikasi berbasis Streamlit untuk memvis
 
 1. Clone repositori ini atau unduh berkas ZIP:
    ```bash
-  
+  https://github.com/dyahtri/Submission-dicoding/tree/main/dashboard
