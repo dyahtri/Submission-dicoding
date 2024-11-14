@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load data
-data = pd.read_csv('hour.csv')
+data = pd.read_csv('dashboard/hour.csv')
 
 # Pastikan kolom 'dteday' ada sebagai kolom tanggal dalam data
 data['dteday'] = pd.to_datetime(data['dteday'], errors='coerce')
