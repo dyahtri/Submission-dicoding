@@ -93,7 +93,7 @@ elif menu == "Visualisasi":
     
     # Visualisasi Tren Penyewaan Sepeda Berdasarkan Tanggal dan Hari Libur
     st.subheader("Tren Penyewaan Sepeda Berdasarkan Tanggal dan Hari Libur")
-    
+
     # Mengelompokkan data berdasarkan 'dteday' dan 'holiday' untuk melihat perbedaan tren
     holiday_counts = filtered_data.groupby(['dteday', 'holiday'])['cnt'].sum().reset_index()
     holiday_counts['dteday'] = pd.to_datetime(holiday_counts['dteday'])
@@ -101,11 +101,13 @@ elif menu == "Visualisasi":
     # Visualisasi Tren Penyewaan Sepeda berdasarkan Hari Libur vs Bukan
     plt.figure(figsize=(12, 6))
     sns.lineplot(data=holiday_counts, x='dteday', y='cnt', hue='holiday', marker='o', palette={0: 'gray', 1: 'red'})
+    # Menambahkan kustomisasi untuk legend
     plt.xlabel("Tanggal")
     plt.ylabel("Jumlah Penyewaan Sepeda (cnt)")
     plt.title("Tren Penyewaan Sepeda Berdasarkan Tanggal dan Hari Libur")
-    plt.legend(title='Hari Libur', labels=['Bukan Hari Libur', 'Libur'])
+    plt.legend(title='Hari Libur', labels=['Bukan Libur', 'Libur'])
     st.pyplot(plt)
+
 
 # Bagian Prediksi
 elif menu == "Prediksi":
