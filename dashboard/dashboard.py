@@ -71,16 +71,23 @@ elif menu == "Visualisasi":
     plt.title("Tren Penyewaan Sepeda Harian")
     st.pyplot(plt)
 
-    # Visualisasi Tren Musiman
-    st.subheader("Tren Penyewaan Sepeda Berdasarkan Musim")
-    seasonal_counts = filtered_data.groupby('season')['cnt'].mean().reset_index()
-    seasonal_counts['season'] = seasonal_counts['season'].map({1: 'Spring', 2: 'Summer', 3: 'Fall', 4: 'Winter'})
+    # Visualisasi Tren Musiman berdasarkan Bulan
+    st.subheader("Tren Penyewaan Sepeda Berdasarkan Musim dan Bulan")
+    
+    # Menambahkan kolom 'bulan' dan 'musim'
+    filtered_data['bulan'] = filtered_data['dteday'].dt.month
+    seasonal_monthly_counts = filtered_data.groupby(['season', 'bulan'])['cnt'].mean().reset_index()
 
-    plt.figure(figsize=(10, 6))
-    sns.barplot(data=seasonal_counts, x='season', y='cnt', palette='Set2')
-    plt.xlabel("Musim")
+    # Mapping musim ke nama
+    seasonal_monthly_counts['season'] = seasonal_monthly_counts['season'].map({1: 'Spring', 2: 'Summer', 3: 'Fall', 4: 'Winter'})
+    
+    # Visualisasi Tren Penyewaan Sepeda per Bulan dan Musim
+    plt.figure(figsize=(12, 6))
+    sns.lineplot(data=seasonal_monthly_counts, x='bulan', y='cnt', hue='season', marker='o', palette='Set2')
+    plt.xlabel("Bulan")
     plt.ylabel("Rata-rata Jumlah Penyewaan Sepeda")
-    plt.title("Tren Penyewaan Sepeda Berdasarkan Musim")
+    plt.title("Tren Penyewaan Sepeda Berdasarkan Bulan dan Musim")
+    plt.xticks(ticks=np.arange(1, 13), labels=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
     st.pyplot(plt)
 
 # Bagian Prediksi
