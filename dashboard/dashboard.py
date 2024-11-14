@@ -68,6 +68,7 @@ elif menu == "Visualisasi":
     plt.plot(daily_counts.index, daily_counts['cnt'], color='green', linewidth=2)
     plt.xlabel("Tanggal")
     plt.ylabel("Jumlah Penyewaan Sepeda (cnt)")
+    plt.xticks([0, 1, 2, 3], ['Clear/Few clouds', 'Mist/Cloudy', 'Light Snow/Light Rain', 'Heavy Rain/Ice'])
     plt.title("Tren Penyewaan Sepeda Harian")
     st.pyplot(plt)
 
