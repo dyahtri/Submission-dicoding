@@ -37,7 +37,7 @@ if menu == "Home":
     st.title("Selamat Datang di Dashboard Penyewaan Sepeda")
     
     # Menampilkan gambar ilustrasi
-    st.image("https://i.pinimg.com/736x/49/a1/f7/49a1f744d33146df192e65bf244c9474.jpg", caption="Ilustrasi Penyewaan Sepeda", use_column_width=True)
+    st.image("https://i.pinimg.com/736x/49/a1/f7/49a1f744d33146df192e65bf244c9474.jpg", caption="Ilustrasi Penyewaan Sepeda", use_container_width=True)
     st.write("Dashboard ini menyediakan visualisasi dan prediksi jumlah penyewaan sepeda berdasarkan data historis.")
     st.write("Pilih menu 'Visualisasi' untuk melihat grafik tren penyewaan sepeda atau 'Prediksi' untuk memprediksi jumlah penyewaan di masa depan.")
 
